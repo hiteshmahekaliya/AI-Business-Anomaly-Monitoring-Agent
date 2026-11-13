@@ -1,0 +1,133 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Design system — "AI Business Anomaly Monitor"
+ * Corporate analytics SaaS: light gray canvas, white cards, dark navy ink,
+ * subtle blue accents, red/amber severity indicators.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", var(--font-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-critical: var(--critical);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(0.968 0.004 250);
+  --foreground: oklch(0.21 0.05 262);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.05 262);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.21 0.05 262);
+  --primary: oklch(0.53 0.16 258);
+  --primary-foreground: oklch(0.985 0.005 250);
+  --secondary: oklch(0.94 0.012 255);
+  --secondary-foreground: oklch(0.3 0.05 262);
+  --muted: oklch(0.955 0.006 250);
+  --muted-foreground: oklch(0.5 0.035 258);
+  --accent: oklch(0.94 0.02 255);
+  --accent-foreground: oklch(0.3 0.05 262);
+  --destructive: oklch(0.55 0.2 27);
+  --destructive-foreground: oklch(0.985 0.005 250);
+  --critical: oklch(0.55 0.21 27);
+  --warning: oklch(0.75 0.14 72);
+  --success: oklch(0.58 0.13 155);
+  --border: oklch(0.915 0.008 255);
+  --input: oklch(0.915 0.008 255);
+  --ring: oklch(0.63 0.12 258);
+  --sidebar: oklch(0.22 0.045 262);
+  --sidebar-foreground: oklch(0.92 0.01 255);
+  --sidebar-accent: oklch(0.3 0.055 262);
+  --sidebar-border: oklch(0.3 0.04 262);
+  --sidebar-ring: oklch(0.63 0.12 258);
+}
+
+.dark {
+  --background: oklch(0.16 0.03 262);
+  --foreground: oklch(0.95 0.01 255);
+  --card: oklch(0.21 0.04 262);
+  --card-foreground: oklch(0.95 0.01 255);
+  --popover: oklch(0.21 0.04 262);
+  --popover-foreground: oklch(0.95 0.01 255);
+  --primary: oklch(0.68 0.14 255);
+  --primary-foreground: oklch(0.16 0.03 262);
+  --secondary: oklch(0.28 0.04 262);
+  --secondary-foreground: oklch(0.95 0.01 255);
+  --muted: oklch(0.26 0.035 262);
+  --muted-foreground: oklch(0.7 0.03 258);
+  --accent: oklch(0.3 0.05 262);
+  --accent-foreground: oklch(0.95 0.01 255);
+  --destructive: oklch(0.65 0.19 25);
+  --destructive-foreground: oklch(0.16 0.03 262);
+  --critical: oklch(0.65 0.19 25);
+  --warning: oklch(0.8 0.13 72);
+  --success: oklch(0.68 0.13 155);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.55 0.08 260);
+  --sidebar: oklch(0.19 0.035 262);
+  --sidebar-foreground: oklch(0.92 0.01 255);
+  --sidebar-accent: oklch(0.28 0.05 262);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.55 0.08 260);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility card-shadow {
+  box-shadow: 0 1px 2px 0 color-mix(in oklab, var(--foreground) 5%, transparent);
+}
+
+@utility chart-grid-line {
+  stroke: var(--color-border);
+  stroke-dasharray: 3 3;
+}
